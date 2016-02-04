@@ -5,7 +5,7 @@ app.get('/', (req, res) => {
 	console.log('headers:', req.headers)
 
 	var fullLang = req.headers['accept-language'];
-	var fullSoftware = req.headers['user-agent'];
+	var fullSoftware = req.headers['user-agent'] += ',';
 
 	var ip = req.headers['x-forwarded-for'],
 		lang = fullLang.substr(0, fullLang.indexOf(',')),
