@@ -2,12 +2,12 @@ var express = require('express');
 var app = express();
 
 app.get('/', (req, res) => {
-	console.log('connection:', req.headers)
+	console.log('headers:', req.headers)
 
 	var fullLang = req.headers['accept-language'];
 	var fullSoftware = req.headers['user-agent'];
 
-	var ip = req.connection.remoteAddress,
+	var ip = req.headers['x-forwarded-for'],
 		lang = fullLang.substr(0, fullLang.indexOf(',')),
 		software = fullSoftware.match(/\((.*?)\)/)[1];
 
